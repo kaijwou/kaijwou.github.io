@@ -29,7 +29,7 @@ nav img{
     position: relative;
 }
 .nav-links ul li a{
-    color: #bdbdbd;
+    color: #9e9e9e;
     text-decoration: none;
     font-size: 13px;
 }
@@ -37,7 +37,7 @@ nav img{
     content: '';
     width: 0%;
     height: 2px;
-    background: #bdbdbd; /* #f44336 for red underline */
+    background: #9e9e9e; /* #f44336 for red underline */
     display: block;
     margin: auto;
     transition: 0.5s;
