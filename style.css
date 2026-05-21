@@ -83,4 +83,9 @@ nav img{
     transition: 1s;
     color: #fff;
 }
+@media(max-width: 700px){ /* Applicable to device whose width is less than or equal to 700px */
+    .text-box h1{
+    font-size: 20px;
+    }
+}
 
