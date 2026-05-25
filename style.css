@@ -69,23 +69,50 @@ nav img{
     display: flex;
     justify-content: space-between;
 }
+@media(max-width: 700px){
+    .row{
+        flex-direction: column;
+    }
+}
+
+/*-----Projects-----*/
 .projects{
-    width: 88%;
+    width: 100%;
     color: #455a64;
     margin: auto;
     text-align: center;
 }
 .projects-col{
     flex-basis: 50%;
-    margin-bottom: 30px;
     position: relative;
     overflow: hidden;
 }
 .projects-col img{
-    width: 100%;
+    width: 80%;
 }
-@media(max-width: 700px){
-    .row{
-        flex-direction: column;
-    }
+.layer{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+.layer:hover{
+    background: rgba(255, 255, 255, 0.5);
+}
+.layer h3{
+    color: #455a64;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.5s;
+}
+.layer:hover h3{
+    opacity: 1;
 }
