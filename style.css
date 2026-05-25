@@ -76,7 +76,7 @@ nav img{
 }
 
 .projects{
-    width: 100%;
+    width: 80%;
     color: #455a64;
     margin: auto;
     text-align: center;
@@ -87,7 +87,7 @@ nav img{
     overflow: hidden;
 }
 .projects-col img{
-    width: 80%;
+    width: 100%;
 }
 .layer{
     background: transparent;
