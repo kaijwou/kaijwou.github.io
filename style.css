@@ -68,6 +68,24 @@ nav .fa{
     display: none;
 }
 @media(max-width: 700px){
-
 }
-
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.projects{
+    width: 88%;
+    color: #455a64;
+    margin: auto;
+    text-align: center;
+}
+.projects-col{
+    flex-basis: 50%;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.projects-col img{
+    width: 100%;
+}
