@@ -5,8 +5,8 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">    </head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">    </head>
 <body>
 <section class="header" id="home">
     <nav>
@@ -25,28 +25,65 @@
 </div>
 </section> 
 
+<!--Projects-->
 <section class="projects" id="projects">
     <h1>Projects</h1>
     
     <div class="row">
         <div class="projects-col">
-            <img src="images/8-bit-cpu/clock_module.png" onclick="openModal()">
-            <div class="layer">
-                <h3>8-Bit CPU</h3>
-            </div>
+            <a href="project-8-bit-cpu.html" class="ajax-load-page">
+                <img src="images/8-bit-cpu/clock_module.png" alt="8-Bit CPU">
+                <div class="layer">
+                    <h3>8-Bit CPU</h3>
+                </div>
+            </a>
         </div>
+
         <div class="projects-col">
-            <img src="images/sbw-removal-profile/shape-3d.png" onclick="openModal()">
-            <div class="layer">
-                <h3>Wafer Thickness and Shape Inspection Tool for KOBELCO SBW-330</h3>
-            </div>
+            <a href="project-sbw.html" class="ajax-load-page">
+                <img src="images/sbw-removal-profile/shape-3d.png" alt="SBW Inspection Tool">
+                <div class="layer">
+                    <h3>Wafer Thickness and Shape Inspection Tool for KOBELCO SBW-330</h3>
+                </div>
+            </a>
         </div>
-    </div>
-    
-    <div class="row">
-    
     </div>
 </section>
-    
+
+<div id="project-view"></div>
+
+<script>
+const projectView = document.getElementById("project-view");
+
+document.querySelectorAll(".ajax-load-page").forEach(link => {
+  link.addEventListener("click", async event => {
+    event.preventDefault();
+
+    const response = await fetch(link.getAttribute("href"));
+    const html = await response.text();
+
+    projectView.innerHTML = `
+      <button class="close-project">×</button>
+      <div class="project-content">
+        ${html}
+      </div>
+    `;
+
+    requestAnimationFrame(() => {
+      projectView.classList.add("active");
+    });
+
+    document.querySelector(".close-project").addEventListener("click", () => {
+      projectView.classList.remove("active");
+
+      setTimeout(() => {
+        projectView.innerHTML = "";
+        document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+      }, 350);
+    });
+  });
+});
+</script>
+
 </body>
 </html>
