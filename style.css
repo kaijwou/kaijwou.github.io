@@ -84,6 +84,7 @@ nav img{
     color: #455a64;
     margin: auto;
     text-align: center;
+    margin-bottom: 75px;
 }
 .projects-col{
     flex-basis: 50%;
@@ -177,7 +178,9 @@ nav img{
 }
 .project-hero-image {
     width: 50%;
-    margin-bottom: 10px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
 }
 .project-description p{
     font-size: 18px;
