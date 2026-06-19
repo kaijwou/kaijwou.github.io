@@ -1,89 +1,192 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">    </head>
-<body>
-<section class="header" id="home">
-    <nav>
-        <div class="nav-links" id="navlinks">
-            <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <li><a href="">ABOUT</a></li>
-            </ul>
-        </div>
-    </nav>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background: #fff;
+    position: relative;
+}
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+    width: 150px;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: #455a64;
+    text-decoration: none;
+    font-size: 13px;
+}
+.nav-links ul li a:hover{
+    color: #f44336;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+.text-box{
+    width: 90%;
+    color: #455a64;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.text-box h1{
+    font-size: 75px;
+}
+.text-box h1 a{
+    color: inherit;
+    text-decoration: none;
+}
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+@media(max-width: 700px){
+    .row{
+        flex-direction: column;
+    }
+}
 
-<div class="text-box">
-    <h1>Kai Ou</h1>
-    <p id="typewriter">Electrical Engineering | Economics</p>
-</div>
-</section> 
+.projects{
+    width: 80%;
+    color: #455a64;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 75px;
+}
+.projects-col{
+    flex-basis: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.projects-col img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+.layer{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+.layer:hover{
+    background: rgba(255, 255, 255, 0.5);
+}
+.layer h3{
+    color: #455a64;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.5s;
+}
+.layer:hover h3{
+    opacity: 1;
+}
 
-<!--Projects-->
-<section class="projects" id="projects">
-    <h1>Projects</h1>
-    
-    <div class="row">
-        <div class="projects-col">
-            <a href="project-8-bit-cpu.html" class="ajax-load-page">
-                <img src="images/8-bit-cpu/clock_module.png" alt="8-Bit CPU">
-                <div class="layer">
-                    <h3>8-Bit CPU</h3>
-                </div>
-            </a>
-        </div>
+/*Project view*/
+#project-view {
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 80px 10%;
 
-        <div class="projects-col">
-            <a href="project-sbw.html" class="ajax-load-page">
-                <img src="images/sbw-removal-profile/shape-3d.png" alt="SBW Inspection Tool">
-                <div class="layer">
-                    <h3>Silicon Wafer Thickness and Shape Inspection Tool for KOBELCO SBW-330</h3>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
+    opacity: 0;
+    transform: translateY(40px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
 
-<div id="project-view"></div>
+#project-view.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
 
-<script>
-const projectView = document.getElementById("project-view");
+.close-project {
+    color: #455a64;
+    position: fixed;
+    top: 25px;
+    right: 35px;
+    font-size: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+}
 
-document.querySelectorAll(".ajax-load-page").forEach(link => {
-  link.addEventListener("click", async event => {
-    event.preventDefault();
+.project-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-    const response = await fetch(link.getAttribute("href"));
-    const html = await response.text();
+/* Single Project Page */
+.single-project {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 0;
+    color: #222;
+    font-family: "Poppins", sans-serif;
+}
 
-    projectView.innerHTML = `
-      <button class="close-project">×</button>
-      <div class="project-content">
-        ${html}
-      </div>
-    `;
+.project-title {
+    font-size: 25px;
+    color: #455a64;
+    margin-bottom: 10px;
+}
+.project-hero-image {
+    width: 50%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+.project-description p{
+    font-size: 18px;
+    line-height: 1.8;
+}
+.project-description ul {
+    padding-left: 20px;
+}
 
-    requestAnimationFrame(() => {
-      projectView.classList.add("active");
-    });
-
-    document.querySelector(".close-project").addEventListener("click", () => {
-      projectView.classList.remove("active");
-
-      setTimeout(() => {
-        projectView.innerHTML = "";
-        document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
-      }, 350);
-    });
-  });
-});
-</script>
-
-</body>
-</html>
