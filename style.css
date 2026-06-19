@@ -170,6 +170,13 @@ nav img{
     color: #222;
     font-family: "Poppins", sans-serif;
 }
+.single-project a {
+    color: #455a64;
+    text-decoration: underline;
+}
+.single-project a:hover {
+    color: #f44336;
+}
 
 .project-title {
     font-size: 25px;
@@ -177,7 +184,7 @@ nav img{
     margin-bottom: 10px;
 }
 .project-hero-image {
-    width: 50%;
+    width: 50%; 
     object-fit: contain;
     object-position: center;
 }
