@@ -188,11 +188,17 @@ nav img{
     object-fit: contain;
     object-position: center;
 }
+.project-hero-image--full {
+    margin-top: 5%;
+    display: flex;
+    width: 100%;
+}
 .project-images{
     margin-top: 0;
 }
 .project-description p{
     font-size: 18px;
+    margin-top: 1%;
     line-height: 1.8;
 }
 .project-description ul {
