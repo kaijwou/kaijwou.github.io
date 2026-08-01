@@ -4,7 +4,22 @@
     <div class="project-description">
         <p>An 8-bit CPU based on the SAP (Simple-As-Possible) architecture built on breadboards as an exercise to learn about computer architecture. This project is based on <a href="https://eater.net/8bit" target="_blank">Ben Eater's 8-bit Computer</a>.</p>
     </div>
-    <img src="images/8-bit-cpu/clock_sch.jpg" alt="8-Bit CPU" class="project-hero-image">
-
-
+    <h2 class="project-subtitle">Clock</h2>
+    <div class="row project-images">
+        <img src="images/8-bit-cpu/clock_sch.jpg" alt="8-Bit CPU" class="project-hero-image">
+        <div>
+            <p><strong style="color: #455a64;">Multivibrators</strong></p>
+            <div class="project-description">
+                <p>Multivibrator circuits are used to generate two-state signals. Three configurations are used: astable, monostable, and bistable.</p>
+            </div>
+            <div class="project-description">
+                <ul>
+                    <li><strong style="color: #455a64;">Astable multivibrator</strong> acts as a free-running clock. The 1uF capacitor continually charges and discharges, causing the 555 timer to toggle between high and low. The potentiometer allows clock speed adjustment.</li>
+                    <li><strong style="color: #455a64;">Monostable multivibrator</strong> has one stable state. When triggered by the push button, it temporarily flips to the unstable state for a set period of time before returning to the original stable state.</li>
+                    <li><strong style="color: #455a64;">Bistable multivibrator</strong> acts as an SR latch. It is used to select between the free-running clock and the manual clock.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="project-subtitle">Registers</h2>
 </section>
