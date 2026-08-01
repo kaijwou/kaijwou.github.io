@@ -179,8 +179,14 @@ nav img{
 }
 
 .project-title {
+    font-size: 30px;
+    color: #455a64;
+    margin-bottom: 10px;
+}
+.project-subtitle {
     font-size: 25px;
     color: #455a64;
+    margin-top: 30px;
     margin-bottom: 10px;
 }
 .project-hero-image {
@@ -196,8 +202,17 @@ nav img{
 .project-images{
     margin-top: 0;
 }
+.project-images img {
+    flex: 1;
+    min-width: 0;
+}
+
+.project-images > div {
+    flex: 1;
+    min-width: 0;
+}
 .project-description p{
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 1%;
     line-height: 1.8;
 }
