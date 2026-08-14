@@ -4,15 +4,21 @@
     <div class="project-description">
         <p>An 8-bit CPU based on the SAP (Simple-As-Possible) architecture built on breadboards as an exercise to learn about computer architecture. This project is based on <a href="https://eater.net/8bit" target="_blank">Ben Eater's 8-bit Computer</a>.</p>
     </div>
-    <h2 class="project-subtitle">Clock</h2>
-    <div class="row project-images">
-        <img src="images/8-bit-cpu/clock_sch.jpg" alt="8-Bit CPU" class="project-hero-image">
-        <div>
-            <p><strong style="color: #455a64;">Multivibrators</strong></p>
+
+    <div class="module-nav">
+        <a href="#" class="module-link active-link" data-target="clock">Clock</a>
+        <a href="#" class="module-link" data-target="alu">ALU</a>
+        <a href="#" class="module-link" data-target="memory">Memory</a>
+        <a href="#" class="module-link" data-target="counter">Program Counter</a>
+        <a href="#" class="module-link" data-target="output">Output Display</a>
+    </div>
+
+    <section id="clock" class="module-section active">
+        <h2 class="project-subtitle">Clock</h2>
+        <div class="row project-images">
+            <img src="images/8-bit-cpu/clock_sch.jpg" alt="8-Bit CPU" class="project-hero-image">
             <div class="project-description">
-                <p>Multivibrator circuits are used to generate two-state signals. Three configurations are used: astable, monostable, and bistable.</p>
-            </div>
-            <div class="project-description">
+                <p><strong style="color: #455a64;">Multivibrator circuits</strong> are used to generate two-state signals. Three configurations are used: astable, monostable, and bistable.</p>
                 <ul>
                     <li><strong style="color: #455a64;">Astable multivibrator</strong> acts as a free-running clock. The 1uF capacitor continually charges and discharges, causing the 555 timer to toggle between high and low. The potentiometer allows clock speed adjustment.</li>
                     <li><strong style="color: #455a64;">Monostable multivibrator</strong> has one stable state. When triggered by the push button, it temporarily flips to the unstable state for a set period of time before returning to the original stable state.</li>
@@ -20,6 +26,50 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <h2 class="project-subtitle">Registers</h2>
+    </section>
+
+    <section id="alu" class="module-section">
+        <h2 class="project-subtitle">Arithmetic Logic Unit (ALU)</h2>
+        <div class="row project-images">
+            <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
+            <div class="project-description">
+                <p><strong style="color: #455a64;">Arithmetic logic unit (ALU)</strong> is a combinational circuit for performing arithmetic and logical or bitwise operations on binary numbers.</p>
+                <p>The SAP-1 computer contains a simple ALU, consisting of logic gates and flip-flops, capable of binary addition and subtraction on data in A-register (accumulator) and B-register.</p>
+            </div>
+        </div>
+        <div class="row project-images">
+            <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
+            <div class="project-description">
+                <p><strong style="color: #455a64;">Registers</strong> hold data, memory addresses, or instructions. Inside the ALU, the 8-bit numbers in A-register and B-register are added in the sum register.
+                    To create 
+                </p>
+            </div>
+        </div>
+        <div class="project-description">
+            <p>To perform addition and subtraction on 8-bit numbers, two <a href="https://www.ti.com/lit/ds/symlink/sn74ls283.pdf?ts=1786653037316" target="_blank">74LS283</a> ICs (4-bit binary full adders) are cascaded together, taking data from registers A and B.</p>
+            <ul>
+                <li>Addition: When SUBTRACT is LOW, B-register passes through XOR gates unchanged, and the 74LS283 adders sum A-register and B-register.</li>
+                <li>Subtraction: When SUBTRACT is HIGH, B-register is inverted by XOR gates. The same HIGH SUBTRACT signal feeds into the Carry-In pin of the lower 74LS283 adder, converting B-register into 2's complement.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="memory" class="module-section">
+        <h2 class="project-subtitle">Memory</h2>
+        <div class="row project-images">
+            <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
+            <div class="project-description">
+                <p><strong style="color: #455a64;">Static Random Access Memory (SRAM)</strong></p>
+                <p>Static RAM...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="counter" class="module-section">
+        <h2 class="project-subtitle">Program Counter</h2>
+        <div class="row project-images">
+            <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
+        </div>
+    </section>
+
 </section>
