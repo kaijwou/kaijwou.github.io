@@ -333,4 +333,13 @@ nav img{
         right: 20px;
         font-size: 30px;
     }
+    .module-nav {
+        flex-wrap: wrap;
+        gap: 12px 16px;
+        margin: 15px 0;
+    }
+
+    .module-nav a {
+        font-size: 13px;
+    }
 }
