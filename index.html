@@ -55,32 +55,43 @@
 const projectView = document.getElementById("project-view");
 
 document.querySelectorAll(".ajax-load-page").forEach(link => {
-  link.addEventListener("click", async event => {
-    event.preventDefault();
+    link.addEventListener("click", async event => {
+        event.preventDefault();
 
-    const response = await fetch(link.getAttribute("href"));
-    const html = await response.text();
+        const response = await fetch(link.getAttribute("href"));
+        const html = await response.text();
 
-    projectView.innerHTML = `
-      <button class="close-project">×</button>
-      <div class="project-content">
-        ${html}
-      </div>
-    `;
+        projectView.innerHTML = `
+            <button class="close-project">×</button>
+            <div class="project-content">
+                ${html}
+            </div>
+        `;
 
-    requestAnimationFrame(() => {
-      projectView.classList.add("active");
+        requestAnimationFrame(() => {
+            projectView.classList.add("active");
+        });
+
+        // Module navigation
+        projectView.querySelectorAll(".module-link").forEach(moduleLink => {
+            moduleLink.addEventListener("click", e => {
+                e.preventDefault();
+                projectView.querySelectorAll(".module-section").forEach(s => s.classList.remove("active"));
+                projectView.querySelectorAll(".module-link").forEach(l => l.classList.remove("active-link"));
+                projectView.querySelector("#" + moduleLink.dataset.target).classList.add("active");
+                moduleLink.classList.add("active-link");
+            });
+        });
+
+        // Close button
+        document.querySelector(".close-project").addEventListener("click", () => {
+            projectView.classList.remove("active");
+            setTimeout(() => {
+                projectView.innerHTML = "";
+                document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+            }, 350);
+        });
     });
-
-    document.querySelector(".close-project").addEventListener("click", () => {
-      projectView.classList.remove("active");
-
-      setTimeout(() => {
-        projectView.innerHTML = "";
-        document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
-      }, 350);
-    });
-  });
 });
 </script>
 
