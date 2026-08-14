@@ -33,7 +33,7 @@
             <a href="project-8-bit-cpu.html" class="ajax-load-page">
                 <img src="images/8-bit-cpu/clock_sch.jpg" alt="8-Bit CPU">
                 <div class="layer">
-                    <h3>8-Bit CPU</h3>
+                    <h3>8-Bit CPU on Breadboards</h3>
                 </div>
             </a>
         </div>
@@ -76,10 +76,20 @@ document.querySelectorAll(".ajax-load-page").forEach(link => {
         projectView.querySelectorAll(".module-link").forEach(moduleLink => {
             moduleLink.addEventListener("click", e => {
                 e.preventDefault();
+
+                const isAlreadyActive = moduleLink.classList.contains("active-link");
+                const target = isAlreadyActive ? "overview" : moduleLink.dataset.target;
+
                 projectView.querySelectorAll(".module-section").forEach(s => s.classList.remove("active"));
                 projectView.querySelectorAll(".module-link").forEach(l => l.classList.remove("active-link"));
-                projectView.querySelector("#" + moduleLink.dataset.target).classList.add("active");
-                moduleLink.classList.add("active-link");
+
+                projectView.querySelector("#" + target).classList.add("active");
+
+                if (isAlreadyActive) {
+                    // no link should be highlighted when back on overview
+                } else {
+                    moduleLink.classList.add("active-link");
+                }
             });
         });
 
