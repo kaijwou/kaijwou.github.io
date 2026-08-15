@@ -2,7 +2,7 @@
 
     <h1 class="project-title">8-Bit CPU on Breadboards</h1>
     <div class="project-description">
-        <p>An 8-bit CPU based on the SAP (Simple-As-Possible) architecture built on breadboards as an exercise to learn about computer architecture. This project is based on <a href="https://eater.net/8bit" target="_blank">Ben Eater's 8-bit computer</a>.</p>
+        <p>An 8-bit CPU based on the SAP-1 (Simple-As-Possible) architecture built on breadboards as an exercise to learn about computer architecture. This project is based on <a href="https://eater.net/8bit" target="_blank">Ben Eater's 8-bit computer</a>.</p>
     </div>
 
     <div class="module-nav">
@@ -69,19 +69,35 @@
     </section>
 
     <section id="memory" class="module-section">
+        <h2 class="project-subtitle">Program Counter</h2>
+        <div class="row project-images">
+            <figure class="project-hero-image">
+                <img src="images/8-bit-cpu/program_counter_sch.png" alt="8-Bit CPU">
+                <figcaption>Program counter schematic</figcaption>
+            </figure>
+            <div class="project-description">
+                <p><strong style="color: #455a64;">Program counter</strong> (also known as instruction pointer) is a register that stores the memory address of the next instruction to be executed.</p>
+                <p>A <strong style="color: #455a64;">binary counter</strong>, whose value increments with each clock pulse, can be created by cascading multiple flip-flops (J-K or D-types), connecting the output of each flip-flop to the clock input of the next stage. 
+                    By doing so, each stage flips at half the frequency of the previous stage, creating a counting sequence in binary.
+                </p>
+            </div>
+        </div>
+        <div class="project-description">
+            <p>Using the <a href="https://eater.net/datasheets/74ls161.pdf" target="_blank">74LS161</a> (4-bit binary counter), a program counter that increments once per instruction can be created. 
+            At the start of the <strong style="color: #455a64;">instruction cycle</strong> (also known as the fetch–decode–execute cycle), the memory address stored in the program counter is fetched to the <strong style="color: #455a64;">memory address register (MAR)</strong>. Then, the program counter can:</p>
+            <ul>
+                <li>Increment the address pointer to the next instruction in memory, or</li>
+                <li>Jump to a new memory address</li>
+            </ul>
+            <p>Activating the count enable pin of the 74LS161 allows the program counter to increment and advance to the next instruction. Count enable is disabled while the instruction is being executed.
+               Conversely, activating the jump (load) pin allows the program counter to take the value from the bus and redirect to a new memory address.</p>
+        </div>
         <h2 class="project-subtitle">Static Random Access Memory (SRAM)</h2>
         <div class="row project-images">
             <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
             <div class="project-description">
                 <p><strong style="color: #455a64;">Static Random Access Memory (SRAM)</strong></p>
                 <p>Static RAM...</p>
-            </div>
-        </div>
-        <h2 class="project-subtitle">Program Counter</h2>
-        <div class="row project-images">
-            <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
-            <div class="project-description">
-                <p><strong style="color: #455a64;">Program counter</strong> is a register that stores the memory address of the next instruction to be executed.</p>
             </div>
         </div>
     </section>
