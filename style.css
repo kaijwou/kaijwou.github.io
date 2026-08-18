@@ -273,7 +273,8 @@ nav img{
     margin-top: 1%;
     line-height: 1.8;
 }
-.project-description ul {
+.project-description ul,
+.project-description ol {
     padding-left: 20px;
 }
 
