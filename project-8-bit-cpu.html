@@ -10,7 +10,7 @@
         <a href="#" class="module-link" data-target="arithmetic">Arithmetic Logic Unit</a>
         <a href="#" class="module-link" data-target="memory">Memory Unit</a>
         <a href="#" class="module-link" data-target="control">Control Unit</a>
-        <a href="#" class="module-link" data-target="output">Output Display</a>
+        <a href="#" class="module-link" data-target="display">Output Display</a>
     </div>
 
     <section id="overview" class="module-section active">
@@ -24,14 +24,14 @@
                 <img src="images/8-bit-cpu/clock_sch.jpg" alt="8-Bit CPU">
                 <figcaption>Clock schematic</figcaption>
             </figure>
-            <div class="project-description">
-                <p><strong style="color: #455a64;">Multivibrator circuits</strong> are used to generate two-state signals. Three configurations are used: astable, monostable, and bistable.</p>
-                <ul>
-                    <li><strong style="color: #455a64;">Astable multivibrator</strong> acts as a free-running clock. The 1uF capacitor continually charges and discharges, causing the 555 timer to toggle between high and low. The potentiometer allows clock speed adjustment.</li>
-                    <li><strong style="color: #455a64;">Monostable multivibrator</strong> has one stable state. When triggered by the push button, it temporarily flips to the unstable state for a set period of time before returning to the original stable state.</li>
-                    <li><strong style="color: #455a64;">Bistable multivibrator</strong> acts as an S-R latch. It is used to select between the free-running clock and the manual clock.</li>
-                </ul>
-            </div>
+        </div>
+        <div class="project-description">
+            <p><strong style="color: #455a64;">Multivibrator circuits</strong> are used to generate two-state signals. Three configurations are used: astable, monostable, and bistable.</p>
+            <ul>
+                <li><strong style="color: #455a64;">Astable multivibrator</strong> acts as a free-running clock. The 1uF capacitor continually charges and discharges, causing the 555 timer to toggle between high and low. The potentiometer allows clock speed adjustment.</li>
+                <li><strong style="color: #455a64;">Monostable multivibrator</strong> has one stable state. When triggered by the push button, it temporarily flips to the unstable state for a set period of time before returning to the original stable state.</li>
+                <li><strong style="color: #455a64;">Bistable multivibrator</strong> acts as an S-R latch. It is used to select between the free-running clock and the manual clock.</li>
+            </ul>
         </div>
     </section>
 
@@ -42,10 +42,10 @@
                 <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU">
                 <figcaption>ALU schematic</figcaption>
             </figure>
-            <div class="project-description">
-                <p><strong style="color: #455a64;">Arithmetic logic unit (ALU)</strong> is a combinational circuit for performing arithmetic and logical or bitwise operations on binary numbers.</p>
-                <p>The SAP-1 computer contains a simple ALU, consisting of logic gates and flip-flops, capable of binary addition and subtraction on data in A-register (accumulator) and B-register.</p>
-            </div>
+        </div>
+        <div class="project-description">
+            <p><strong style="color: #455a64;">Arithmetic logic unit (ALU)</strong> is a combinational circuit for performing arithmetic and logical or bitwise operations on binary numbers.</p>
+            <p>The SAP-1 computer contains a simple ALU, consisting of logic gates and flip-flops, capable of binary addition and subtraction on data in A-register (accumulator) and B-register.</p>
         </div>
         <div class="row project-images">
             <figure class="project-hero-image">
@@ -66,6 +66,9 @@
                 <li>Subtraction: When SUBTRACT is HIGH, B-register is inverted by XOR gates. The same HIGH SUBTRACT signal feeds into the Carry-In pin of the lower 74LS283 adder, converting B-register into 2's complement.</li>
             </ul>
         </div>
+        <div class="project-description">
+            <p><strong style="color: #455a64;">Flag register</strong>...</p>
+        </div>
     </section>
 
     <section id="memory" class="module-section">
@@ -75,12 +78,12 @@
                 <img src="images/8-bit-cpu/program_counter_sch.png" alt="8-Bit CPU">
                 <figcaption>Program counter schematic</figcaption>
             </figure>
-            <div class="project-description">
-                <p><strong style="color: #455a64;">Program counter</strong> (also known as instruction pointer) is a register that stores the memory address of the next instruction to be executed.</p>
-                <p>A <strong style="color: #455a64;">binary counter</strong>, whose value increments with each clock pulse, can be created by cascading multiple flip-flops (J-K or D-types), connecting the output of each flip-flop to the clock input of the next stage. 
-                    By doing so, each stage flips at half the frequency of the previous stage, creating a counting sequence in binary.
-                </p>
-            </div>
+        </div>
+        <div class="project-description">
+            <p><strong style="color: #455a64;">Program counter</strong> (also known as instruction pointer) is a register that stores the memory address of the next instruction to be executed.</p>
+            <p>A <strong style="color: #455a64;">binary counter</strong>, whose value increments with each clock pulse, can be created by cascading multiple flip-flops (J-K or D-types), connecting the output of each flip-flop to the clock input of the next stage. 
+                By doing so, each stage flips at half the frequency of the previous stage, creating a counting sequence in binary.
+            </p>
         </div>
         <div class="project-description">
             <p>Using the <a href="https://eater.net/datasheets/74ls161.pdf" target="_blank">74LS161</a> (4-bit binary counter), a program counter that increments once per instruction can be created. 
@@ -92,6 +95,15 @@
             <p>Activating the count enable pin of the 74LS161 allows the program counter to increment and advance to the next instruction. Count enable is disabled while the instruction is being executed.
                Conversely, activating the jump (load) pin allows the program counter to take the value from the bus and redirect to a new memory address.</p>
         </div>
+        
+        <h2 class="project-subtitle">Memory Address Register (MAR)</h2>
+        <div class="row project-images">
+            <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
+            <div class="project-description">
+                <p><strong style="color: #455a64;"></strong></p>
+            </div>
+        </div>
+        
         <h2 class="project-subtitle">Static Random Access Memory (SRAM)</h2>
         <div class="row project-images">
             <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
@@ -108,6 +120,16 @@
             <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
             <div class="project-description">
                 <p><strong style="color: #455a64;">Instruction register</strong> is a register that...</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="display" class="module-section">
+        <h2 class="project-subtitle">Output Display</h2>
+        <div class="row project-images">
+            <img src="images/8-bit-cpu/A-register_sch.png" alt="8-Bit CPU" class="project-hero-image">
+            <div class="project-description">
+                <p>To select which digit to display and which 7-segment displays turn on, a counter and a decoder are used. Using a 0-3 count signal from a counter created from the 74LS107(dual J-K flip-flops) to drive the 74LS139 (2-to-4 decoder),...</p>
             </div>
         </div>
     </section>
