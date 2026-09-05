@@ -3,6 +3,10 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
+#home,
+#projects {
+    scroll-margin-top: 50px;
+}
 .kicad-text {
     font-family: 'Space Mono', monospace;
 }
