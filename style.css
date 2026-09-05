@@ -3,6 +3,9 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
+.kicad-text {
+    font-family: 'Space Mono', monospace;
+}
 html{
     scroll-behavior: smooth;
 }
@@ -17,7 +20,7 @@ nav{
     padding: 2% 6%;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     background: white;
     z-index: 1000;
@@ -125,17 +128,32 @@ nav img{
     }
 }
 
-.projects{
+.about{
     width: 80%;
+    font-size: 20px;
     color: #455a64;
     margin: auto;
     text-align: center;
     margin-bottom: 75px;
 }
-.projects-col{
+
+.projects{
+    width: 80%;
+    font-size: 20px;
+    color: #455a64;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 75px;
+}
+.projects-col {
     flex-basis: 50%;
     position: relative;
     overflow: hidden;
+    transition: 0.3s;
+}
+.projects-col:hover {
+    transform: scale(1.03);
+    cursor: pointer;
 }
 .projects-col img{
     width: 100%;
@@ -144,16 +162,13 @@ nav img{
     object-position: center;
 }
 .layer{
-    background: transparent;
+    background: rgba(255, 255, 255, 0.5);
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     transition: 0.5s;
-}
-.layer:hover{
-    background: rgba(255, 255, 255, 0.5);
 }
 .layer h3{
     color: #455a64;
@@ -163,11 +178,8 @@ nav img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: 0.5s;
-}
-.layer:hover h3{
     opacity: 1;
+    transition: 0.5s;
 }
 
 /*Project view*/
